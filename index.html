@@ -1019,6 +1019,167 @@
     opacity: 0.04;
   }
 
+  /* ── WORKS SECTION ── */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.work-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeUp 0.8s 0.2s forwards;
+  transition: transform 0.3s;
+}
+
+.work-card-link:hover {
+  transform: translateY(-6px);
+}
+
+.work-card {
+  background: var(--warm-white);
+  border: 1px solid var(--border-soft);
+  overflow: hidden;
+  transition: box-shadow 0.4s, border-color 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-card:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--gold);
+}
+
+.work-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: var(--ink-muted);
+  flex-shrink: 0;
+}
+
+.work-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.work-card:hover .work-image {
+  transform: scale(1.05);
+}
+
+.work-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 21, 15, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.work-card:hover .work-overlay {
+  opacity: 1;
+}
+
+.work-live {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+  border: 2px solid var(--gold);
+  padding: 12px 28px;
+  transition: background 0.3s, transform 0.3s;
+  transform: scale(0.95);
+}
+
+.work-card:hover .work-live {
+  transform: scale(1);
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.work-content {
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--gold-pale);
+  padding: 4px 12px;
+  display: inline-block;
+  margin-bottom: 14px;
+  align-self: flex-start;
+}
+
+.work-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.work-desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  font-weight: 400;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.work-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.tech-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  background: var(--border-soft);
+  color: var(--ink-muted);
+  transition: background 0.3s, color 0.3s;
+}
+
+.work-card:hover .tech-badge {
+  background: var(--gold-pale);
+  color: var(--gold);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .works-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .work-image-wrapper {
+    height: 180px;
+  }
+}
+
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     nav { padding: 20px 24px; }
@@ -1077,6 +1238,7 @@
     <li><a href="#experience">Experience</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#research">Research</a></li>
+    <li><a href="#works">Works</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#awards">Awards</a></li>
     <li><a href="#certifications">Certifications</a></li>
@@ -1320,12 +1482,207 @@
   </div>
 </section>
 
-<!-- SKILLS -->
-<div class="section-divider"><div class="divider-line"></div><span class="divider-label">04 — Skills</span><div class="divider-line"></div></div>
-<section id="skills">
+<!-- WORKS -->
+<div class="section-divider"><div class="divider-line"></div><span class="divider-label">04 — Works</span><div class="divider-line"></div></div>
+<section id="works">
   <div class="section-wrap">
     <div class="section-header">
       <span class="section-num">04</span>
+      <h2 class="section-title">Featured Projects</h2>
+    </div>
+    <div class="works-grid">
+      <!-- Project 1 -->
+      <a href="https://shukdev3-shukgen-advanced.hf.space" target="_blank" rel="noopener noreferrer" class="work-card-link">
+        <div class="work-card">
+          <div class="work-image-wrapper">
+            <img src="1.PNG" alt="ShukGEN Face Stylization Framework" class="work-image">
+            <div class="work-overlay">
+              <span class="work-live">Live Demo →</span>
+            </div>
+          </div>
+          <div class="work-content">
+            <span class="work-tag">Generative AI</span>
+            <h3 class="work-title">ShukGEN — Face Stylization Framework</h3>
+            <p class="work-desc">Advanced face stylization using VAE, Super-Resolution, and StyleTransformBank for 8 unique artistic variations.</p>
+            <div class="work-tech">
+              <span class="tech-badge">PyTorch</span>
+              <span class="tech-badge">VAE</span>
+              <span class="tech-badge">SRHead</span>
+              <span class="tech-badge">HuggingFace</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 2 -->
+      <a href="https://banglaliteformer-new-design.onrender.com/" target="_blank" rel="noopener noreferrer" class="work-card-link">
+        <div class="work-card">
+          <div class="work-image-wrapper">
+            <img src="2.PNG" alt="BanglaLiteFormer" class="work-image">
+            <div class="work-overlay">
+              <span class="work-live">Live Demo →</span>
+            </div>
+          </div>
+          <div class="work-content">
+            <span class="work-tag">NLP · Transformers</span>
+            <h3 class="work-title">BanglaLiteFormer</h3>
+            <p class="work-desc">Lightweight transformer model for Bangla e-commerce sentiment analysis achieving 97% test accuracy in low-resource settings.</p>
+            <div class="work-tech">
+              <span class="tech-badge">Transformer</span>
+              <span class="tech-badge">NLP</span>
+              <span class="tech-badge">Sentiment</span>
+              <span class="tech-badge">Bangla</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 3 -->
+      <a href="https://shukdev3-content-moderator-chatbot.hf.space/" target="_blank" rel="noopener noreferrer" class="work-card-link">
+        <div class="work-card">
+          <div class="work-image-wrapper">
+            <img src="3.PNG" alt="Advanced Content Moderation Chatbot" class="work-image">
+            <div class="work-overlay">
+              <span class="work-live">Live Demo →</span>
+            </div>
+          </div>
+          <div class="work-content">
+            <span class="work-tag">LLM Safety</span>
+            <h3 class="work-title">Advanced Content Moderation Chatbot</h3>
+            <p class="work-desc">A cutting-edge chatbot designed to ensure safe and appropriate interactions in AI-powered applications.</p>
+            <div class="work-tech">
+              <span class="tech-badge">LLM</span>
+              <span class="tech-badge">Safety</span>
+              <span class="tech-badge">Moderation</span>
+              <span class="tech-badge">Groq API</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 4 -->
+      <a href="https://tts-playground-v2.onrender.com/" target="_blank" rel="noopener noreferrer" class="work-card-link">
+        <div class="work-card">
+          <div class="work-image-wrapper">
+            <img src="4.PNG" alt="Advanced Multi-Provider TTS Studio" class="work-image">
+            <div class="work-overlay">
+              <span class="work-live">Live Demo →</span>
+            </div>
+          </div>
+          <div class="work-content">
+            <span class="work-tag">TTS</span>
+            <h3 class="work-title">Advanced Multi-Provider TTS Studio</h3>
+            <p class="work-desc">A comprehensive text-to-speech platform supporting multiple providers and advanced customization options.</p>
+            <div class="work-tech">
+              <span class="tech-badge">Groq PlayAI</span>
+              <span class="tech-badge">OpenAI TTS</span>
+              <span class="tech-badge">Edge TTS</span>
+              <span class="tech-badge">Gradio</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 5 -->
+      <a href="https://neuroscope-advanced.onrender.com/" target="_blank" rel="noopener noreferrer" class="work-card-link">
+        <div class="work-card">
+          <div class="work-image-wrapper">
+            <img src="5.PNG" alt="Neuroscope Advanced" class="work-image">
+            <div class="work-overlay">
+              <span class="work-live">Live Demo →</span>
+            </div>
+          </div>
+          <div class="work-content">
+            <span class="work-tag">Agentic AI</span>
+            <h3 class="work-title">NeuroScope-AI Enhanced</h3>
+            <p class="work-desc">Multi-provider AI chat application integrating Groq and Chutes APIs, with agentic web search, automatic source citations, and domain filtering.</p>
+            <div class="work-tech">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Gradio</span>
+              <span class="tech-badge">Groq API</span>
+              <span class="tech-badge">Asyncio</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 6 -->
+      <a href="https://shukdevtroy.github.io/GitKit/" target="_blank" rel="noopener noreferrer" class="work-card-link">
+        <div class="work-card">
+          <div class="work-image-wrapper">
+            <img src="6.PNG" alt="GitKit" class="work-image">
+            <div class="work-overlay">
+              <span class="work-live">Live Demo →</span>
+            </div>
+          </div>
+          <div class="work-content">
+            <span class="work-tag">Developer Tools</span>
+            <h3 class="work-title">GitKit — GitHub Desktop Manager</h3>
+            <p class="work-desc">Desktop application for browsing repositories, editing files, and pushing commits directly to GitHub without a browser, with local-only credential storage</p>
+            <div class="work-tech">
+              <span class="tech-badge">GitHub API</span>
+              <span class="tech-badge">OAuth</span>
+              <span class="tech-badge">Code Editor</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 7 -->
+      <a href="https://shukdevtroy.github.io/GitSpace/" target="_blank" rel="noopener noreferrer" class="work-card-link">
+        <div class="work-card">
+          <div class="work-image-wrapper">
+            <img src="7.PNG" alt="GitSpace" class="work-image">
+            <div class="work-overlay">
+              <span class="work-live">Live Demo →</span>
+            </div>
+          </div>
+          <div class="work-content">
+            <span class="work-tag">Developer Tools</span>
+            <h3 class="work-title">GitSpace</h3>
+            <p class="work-desc">Windows desktop app that migrates HuggingFace Spaces to GitHub with automatic secret scrubbing, bulk migration, and real-time progress logging — zero dependencies, no Python required.</p>
+            <div class="work-tech">
+              <span class="tech-badge">Git Bash</span>
+              <span class="tech-badge">HuggingFace API</span>
+              <span class="tech-badge">GitHub API</span>
+              <span class="tech-badge">Secret Scrubbing</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 8 -->
+      <a href="https://shukdevtroy.github.io/Spotigrate-App/" target="_blank" rel="noopener noreferrer" class="work-card-link">
+        <div class="work-card">
+          <div class="work-image-wrapper">
+            <img src="8.PNG" alt="Spotigrate" class="work-image">
+            <div class="work-overlay">
+              <span class="work-live">Live Demo →</span>
+            </div>
+          </div>
+          <div class="work-content">
+            <span class="work-tag">Browser Automation</span>
+            <h3 class="work-title">Spotigrate</h3>
+            <p class="work-desc">Desktop app for migrating and managing Spotify playlists via Chrome browser automation — no API tokens needed, with bulk migration, bulk delete, and secure license-based access.</p>
+            <div class="work-tech">
+              <span class="tech-badge">Playwright</span>
+              <span class="tech-badge">Chrome DevTools Protocol</span>
+              <span class="tech-badge">Fernet Encryption</span>
+              <span class="tech-badge">CustomTkinter</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<div class="section-divider"><div class="divider-line"></div><span class="divider-label">05 — Skills</span><div class="divider-line"></div></div>
+<section id="skills">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-num">05</span>
       <h2 class="section-title">Technical Expertise</h2>
     </div>
     <div class="skills-grid">
@@ -1428,11 +1785,11 @@
 </section>
 
 <!-- AWARDS -->
-<div class="section-divider"><div class="divider-line"></div><span class="divider-label">05 — Awards</span><div class="divider-line"></div></div>
+<div class="section-divider"><div class="divider-line"></div><span class="divider-label">06 — Awards</span><div class="divider-line"></div></div>
 <section id="awards">
   <div class="section-wrap">
     <div class="section-header">
-      <span class="section-num">05</span>
+      <span class="section-num">06</span>
       <h2 class="section-title">Honors & Awards</h2>
     </div>
     <div class="awards-grid">
@@ -1477,11 +1834,11 @@
 </section>
 
 <!-- CERTIFICATIONS -->
-<div class="section-divider"><div class="divider-line"></div><span class="divider-label">06 — Certifications</span><div class="divider-line"></div></div>
+<div class="section-divider"><div class="divider-line"></div><span class="divider-label">07 — Certifications</span><div class="divider-line"></div></div>
 <section id="certifications">
   <div class="section-wrap">
     <div class="section-header">
-      <span class="section-num">06</span>
+      <span class="section-num">07</span>
       <h2 class="section-title">Certifications</h2>
     </div>
     <div class="cert-list">
@@ -1534,11 +1891,11 @@
 </section>
 
 <!-- REFERENCES -->
-<div class="section-divider"><div class="divider-line"></div><span class="divider-label">07 — References</span><div class="divider-line"></div></div>
+<div class="section-divider"><div class="divider-line"></div><span class="divider-label">08 — References</span><div class="divider-line"></div></div>
 <section id="contact">
   <div class="section-wrap">
     <div class="section-header">
-      <span class="section-num">07</span>
+      <span class="section-num">08</span>
       <h2 class="section-title">References</h2>
     </div>
     <div class="refs-grid">
