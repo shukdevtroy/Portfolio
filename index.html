@@ -1196,6 +1196,202 @@
     footer { padding: 40px 24px; }
     .scroll-hint { left: 24px; }
   }
+
+/* DARK THEME OVERRIDE - goes at the very end of the existing style block. */
+
+:root {
+  /* surfaces */
+  --cream: #0a0f1f;
+  --warm-white: #111936;
+  /* text (these were dark, now light) */
+  --ink: #eef1fb;
+  --ink-soft: #c5cce3;
+  --ink-muted: #8d97b8;
+  /* vivid accents, readable on dark */
+  --gold: #f5b942;
+  --gold-light: #ffd27a;
+  --teal: #2dd4bf;
+  --teal-light: #5eead4;
+  --violet: #a78bfa;
+  --violet-light: #c4b5fd;
+  --rose: #fb7185;
+  --rose-light: #fda4af;
+  --azure: #60a5fa;
+  --azure-light: #93c5fd;
+  /* translucent tints instead of pastel fills */
+  --gold-pale: rgba(245,185,66,0.14);
+  --teal-pale: rgba(45,212,191,0.14);
+  --violet-pale: rgba(167,139,250,0.16);
+  --rose-pale: rgba(251,113,133,0.14);
+  --azure-pale: rgba(96,165,250,0.15);
+  --border: rgba(96,165,250,0.28);
+  --border-soft: rgba(255,255,255,0.08);
+  --shadow: 0 6px 40px rgba(0,0,0,0.45);
+  --shadow-hover: 0 14px 60px rgba(45,212,191,0.14), 0 6px 30px rgba(0,0,0,0.5);
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(91,63,166,0.35), transparent 60%),
+    radial-gradient(900px 600px at -10% 40%, rgba(26,107,94,0.30), transparent 60%),
+    radial-gradient(900px 500px at 70% 100%, rgba(26,95,168,0.28), transparent 60%),
+    #0a0f1f;
+  background-attachment: fixed;
+  color: var(--ink);
+}
+
+/* cursor was "multiply" (invisible on dark) */
+.cursor { mix-blend-mode: normal; background: var(--teal); }
+.cursor-ring { border-color: var(--teal); opacity: 0.6; }
+
+/* background effects: stronger on dark */
+#neural-canvas { opacity: 0.75; }
+#particle-canvas { opacity: 0.9; }
+.circuit-bg { opacity: 0.10; }
+.glow-blob { opacity: 0.22; }
+.glow-3 { opacity: 0.18; }
+
+/* nav */
+nav {
+  background: rgba(10,15,31,0.78);
+  border-bottom: 1px solid rgba(96,165,250,0.15);
+}
+.nav-logo span { color: var(--teal); }
+.nav-links a:hover { color: var(--teal-light); }
+.nav-links a::after { background: linear-gradient(90deg, var(--teal), var(--violet)); }
+
+/* hero */
+.hero-eyebrow { color: var(--teal); }
+.hero-name em {
+  background: linear-gradient(100deg, var(--gold-light), var(--rose) 55%, var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.hero-title { color: var(--ink-soft); }
+.typewriter-label { color: var(--violet-light); }
+.typewriter-text { color: var(--teal-light); }
+.typewriter-cursor { background: var(--teal-light); }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--teal), var(--azure));
+  color: #06101f;
+  font-weight: 600;
+  box-shadow: 0 6px 24px rgba(45,212,191,0.28);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--violet), var(--rose));
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(167,139,250,0.35);
+}
+.btn-outline { color: var(--ink); border-color: rgba(96,165,250,0.45); }
+.btn-outline:hover { border-color: var(--teal-light); color: var(--teal-light); background: var(--teal-pale); }
+
+.stat-box { background: rgba(17,25,54,0.85); }
+.stat-box:hover { background: #17214a; }
+.stat-num { color: var(--teal-light); }
+.stat-box:nth-child(2) .stat-num { color: var(--violet-light); }
+.stat-box:nth-child(3) .stat-num { color: var(--gold-light); }
+.stat-box:nth-child(4) .stat-num { color: var(--rose-light); }
+.hero-contact-strip { background: rgba(17,25,54,0.85); }
+.contact-item:hover { color: var(--teal-light); }
+
+/* section headings */
+.section-num, .divider-label { color: var(--teal); }
+.divider-line { background: linear-gradient(90deg, transparent, rgba(96,165,250,0.4), transparent); }
+.section-title { color: var(--ink); }
+
+/* experience */
+.exp-period { color: var(--teal-light); }
+.exp-bullets li::before { color: var(--teal); }
+.exp-item { border-bottom-color: rgba(255,255,255,0.08); }
+
+/* education */
+.edu-card { background: rgba(17,25,54,0.85); }
+.edu-card:hover { border-top-color: var(--violet); }
+.edu-card:nth-child(1) { border-top-color: var(--teal); }
+.edu-card:nth-child(2) { border-top-color: var(--azure); }
+.edu-card:nth-child(3) { border-top-color: var(--violet); }
+.edu-card:nth-child(4) { border-top-color: var(--gold); }
+
+/* publications */
+.pub-num { color: var(--gold); opacity: 0.85; }
+.pub-title a:hover { color: var(--teal-light); text-decoration: none; }
+.pub-item { border-bottom-color: rgba(255,255,255,0.08); }
+.pub-type { color: var(--violet-light); }
+
+/* projects */
+.work-card { background: rgba(17,25,54,0.9); }
+.work-card:hover { border-color: var(--teal); }
+.work-image-wrapper { background: #0d1530; }
+.work-overlay { background: rgba(8,12,28,0.78); }
+.work-live { color: #fff; border-color: var(--teal); }
+.work-card:hover .work-live { background: var(--teal); color: #06101f; }
+.work-tag { color: var(--teal-light); background: var(--teal-pale); }
+.work-card-link:nth-child(4n+2) .work-tag { color: var(--violet-light); background: var(--violet-pale); }
+.work-card-link:nth-child(4n+3) .work-tag { color: var(--gold-light); background: var(--gold-pale); }
+.work-card-link:nth-child(4n+4) .work-tag { color: var(--rose-light); background: var(--rose-pale); }
+.tech-badge { background: rgba(255,255,255,0.07); color: var(--ink-muted); }
+.work-card:hover .tech-badge { background: var(--teal-pale); color: var(--teal-light); }
+
+/* skills */
+.skill-category { background: rgba(10,15,31,0.9); }
+.skill-tag { background: rgba(255,255,255,0.04); color: var(--ink-soft); }
+.skill-category:hover .skill-tag { border-color: rgba(255,255,255,0.14); }
+.ai-skill-bar-title { color: var(--teal); }
+.ai-bar-track { background: rgba(255,255,255,0.08); }
+.ai-bar-fill { box-shadow: 0 0 12px rgba(45,212,191,0.35); }
+.ai-bar-fill::after { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7)); }
+
+/* awards */
+.award-card { background: rgba(17,25,54,0.9); }
+.award-year { color: var(--teal-light); }
+.award-card:nth-child(3n+2) .award-year { color: var(--violet-light); }
+.award-card:nth-child(3n) .award-year { color: var(--gold-light); }
+.award-icon { background: var(--violet-pale); }
+
+/* certifications */
+.cert-item { background: rgba(17,25,54,0.9); border-left-color: var(--teal); }
+.cert-item:nth-child(4n+2) { border-left-color: var(--violet); }
+.cert-item:nth-child(4n+3) { border-left-color: var(--gold); }
+.cert-item:nth-child(4n+4) { border-left-color: var(--rose); }
+.cert-item:hover { background: #17214a; }
+.cert-year { color: var(--teal-light); }
+
+/* languages (was ink background with cream text) */
+.lang-card {
+  background: linear-gradient(135deg, #131d45, #0d1431);
+  border: 1px solid rgba(96,165,250,0.25);
+  color: var(--ink);
+}
+.lang-level { color: var(--teal-light); }
+
+/* references */
+.ref-card { background: rgba(17,25,54,0.9); border-color: rgba(96,165,250,0.35); }
+.ref-card:hover { border-color: var(--teal); }
+.ref-email { color: var(--teal-light); }
+.ref-email:hover { color: var(--violet-light); }
+
+/* live data stream + footer */
+.data-stream-wrap { background: #070b18; border-color: rgba(45,212,191,0.28); }
+.stream-overlay { background: linear-gradient(90deg, #070b18 0%, transparent 10%, transparent 90%, #070b18 100%); }
+.data-stream-label { color: var(--teal-light); }
+
+footer {
+  background: linear-gradient(180deg, #070b18, #04060f);
+  border-top: 1px solid rgba(96,165,250,0.2);
+  color: var(--ink);
+}
+.footer-link:hover { color: var(--teal-light); }
+.footer-copy { color: rgba(255,255,255,0.35); }
+
+/* the scroll hint + scrollbar */
+.scroll-line { background: var(--teal); }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0a0f1f; }
+::-webkit-scrollbar-thumb { background: linear-gradient(var(--teal), var(--violet)); border-radius: 6px; }
+::selection { background: var(--teal); color: #06101f; }
 </style>
 </head>
 <body>
